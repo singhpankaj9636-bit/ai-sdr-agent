@@ -1,0 +1,8 @@
+streamlit
+groq
+langgraph
+langchain
+langchain-groq
+gspread
+google-auth
+requests
