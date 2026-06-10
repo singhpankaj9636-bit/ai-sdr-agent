@@ -2,7 +2,7 @@ import streamlit as st
 from groq import Groq
 from langgraph.graph import StateGraph, END
 from langchain_groq import ChatGroq
-from langchain.schema import HumanMessage
+from langchain_core.messages import HumanMessage
 import gspread
 from google.oauth2.service_account import Credentials
 import requests
