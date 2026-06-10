@@ -2,7 +2,9 @@ streamlit
 groq
 langgraph
 langchain
+langchain-core
 langchain-groq
+langchain-community
 gspread
 google-auth
 requests
