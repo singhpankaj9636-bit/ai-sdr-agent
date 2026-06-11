@@ -255,8 +255,9 @@ st.markdown("---")
 st.subheader("📊 Analytics Dashboard")
 
 try:
-    worksheet = sh.worksheet("SDR CRM")
-    all_data = ws.get_all_records()
+    ws = sh.worksheet("SDR CRM")
+all_data = ws.get_all_records()
+
     
     total = len(all_data)
     replies = sum(1 for row in all_data if str(row.get("Reply", "")).lower() == "yes")
