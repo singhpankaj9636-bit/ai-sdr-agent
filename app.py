@@ -250,6 +250,33 @@ if st.button("🚀 Run AI SDR Agent", use_container_width=True):
 
         if result.get("saved"):
             st.success("✅ Saved to Google Sheets CRM!")
+            # Analytics Dashboard
+st.markdown("---")
+st.subheader("📊 Analytics Dashboard")
+
+try:
+    ws = get_sheet()
+    all_data = ws.get_all_records()
+    
+    total = len(all_data)
+    replies = sum(1 for row in all_data if str(row.get("Reply", "")).lower() == "yes")
+    reply_rate = round((replies / total * 100), 1) if total > 0 else 0
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("📨 Outreach Generated", total)
+    with col2:
+        st.metric("↩️ Replies Received", replies)
+    with col3:
+        st.metric("📈 Reply Rate", f"{reply_rate}%")
+
+    if all_data:
+        st.subheader("👥 Recent Prospects")
+        for row in all_data[-5:][::-1]:
+            st.write(f"👤 **{row.get('Name', '')}** — {row.get('Company', '')} | {row.get('Date', '')}")
+
+except Exception as e:
+    st.info("No data yet. Run the agent to start tracking.")
 
 st.markdown("---")
 st.caption("Built by Pankaj Singh · AI SDR Agent · LangGraph + Groq + Streamlit")
