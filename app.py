@@ -256,9 +256,8 @@ st.subheader("📊 Analytics Dashboard")
 
 try:
     ws = sh.worksheet("SDR CRM")
-all_data = ws.get_all_records()
+    all_data = ws.get_all_records()
 
-    
     total = len(all_data)
     replies = sum(1 for row in all_data if str(row.get("Reply", "")).lower() == "yes")
     reply_rate = round((replies / total * 100), 1) if total > 0 else 0
