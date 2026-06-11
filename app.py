@@ -255,7 +255,7 @@ st.markdown("---")
 st.subheader("📊 Analytics Dashboard")
 
 try:
-    ws = get_sheet()
+    worksheet = sh.worksheet("SDR CRM")
     all_data = ws.get_all_records()
     
     total = len(all_data)
