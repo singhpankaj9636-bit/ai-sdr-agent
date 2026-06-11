@@ -255,28 +255,45 @@ st.markdown("---")
 st.subheader("📊 Analytics Dashboard")
 
 try:
+    scopes = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+    creds = Credentials.from_service_account_info(st.secrets["gcp_service_account"], scopes=scopes)
+    gc = gspread.authorize(creds)
+    sh = gc.open_by_key(st.secrets["SHEET_ID"])
     ws = sh.worksheet("SDR CRM")
-    all_data = ws.get_all_records()
+    all_values = ws.get_all_values()
+    
+    if len(all_values) > 1:
+        headers = all_values[0]
+        rows = all_values[1:]
+        
+        reply_idx = headers.index("Reply") if "Reply" in headers else -1
+        name_idx = headers.index("Name") if "Name" in headers else 1
+        company_idx = headers.index("Company") if "Company" in headers else 3
+        date_idx = headers.index("Date") if "Date" in headers else 0
+        
+        total = len(rows)
+        replies = sum(1 for row in rows if reply_idx >= 0 and len(row) > reply_idx and row[reply_idx].strip().lower() == "yes")
+        reply_rate = round((replies / total * 100), 1) if total > 0 else 0
 
-    total = len(all_data)
-    replies = sum(1 for row in all_data if str(row.get("Reply", "")).lower() == "yes")
-    reply_rate = round((replies / total * 100), 1) if total > 0 else 0
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("📨 Outreach Generated", total)
+        with col2:
+            st.metric("↩️ Replies", replies)
+        with col3:
+            st.metric("📈 Reply Rate", f"{reply_rate}%")
 
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric("📨 Outreach Generated", total)
-    with col2:
-        st.metric("↩️ Replies Received", replies)
-    with col3:
-        st.metric("📈 Reply Rate", f"{reply_rate}%")
-
-    if all_data:
         st.subheader("👥 Recent Prospects")
-        for row in all_data[-5:][::-1]:
-            st.write(f"👤 **{row.get('Name', '')}** — {row.get('Company', '')} | {row.get('Date', '')}")
+        for row in list(reversed(rows))[:5]:
+            name = row[name_idx] if len(row) > name_idx else ""
+            company = row[company_idx] if len(row) > company_idx else ""
+            date = row[date_idx] if len(row) > date_idx else ""
+            st.write(f"👤 **{name}** — {company} | {date}")
+    else:
+        st.info("No data yet.")
 
 except Exception as e:
-    st.info("No data yet. Run the agent to start tracking.")
+    st.error(f"Error: {e}")
 
 st.markdown("---")
 st.caption("Built by Pankaj Singh · AI SDR Agent · LangGraph + Groq + Streamlit")
