@@ -1,37 +1,73 @@
-# 🤖 AI SDR Agent
+# 🤖 AI SDR Platform
 
-> Multi-agent AI system that researches prospects, generates personalized outreach, and saves to CRM — automatically.
+> Automate prospect research, personalized outreach, and CRM management with AI.
 
 ## 🔗 Live Demo
 👉 [Try it here](https://ai-sdr-agent-u8m5zulvxnjbjxugbwuhpp.streamlit.app/)
 
-## 🚀 How it works
-Input a prospect's name and company — the agent does the rest:
+Try the application and see how AI can generate research-backed outreach in seconds.
 
-1. 🔍 **Research Node** — searches the web for company news and signals
-2. ✍️ **Outreach Node** — generates personalized connection request + cold email
-3. 📧 **Follow-up Node** — writes a value-first follow-up DM
-4. 💾 **CRM Node** — saves everything to Google Sheets automatically
+## ❌ The Problem
+
+B2B founders and sales teams spend hours:
+
+- Researching prospects
+- Writing personalized messages
+- Creating follow-ups
+- Updating CRM records
+
+This process is repetitive and difficult to scale.
+
+## ✅ The Solution
+
+AI SDR Platform automates the outbound workflow:
+
+1. Researches prospects and company signals
+2. Generates personalized connection requests
+3. Creates cold emails and follow-up messages
+4. Scores outreach quality
+5. Saves data directly to CRM
 
 ## ⚡ Features
-- Real web research via Serper API
-- Personalized messages based on actual company data
-- Connection request, follow-up, and cold email in one click
-- Auto-save to Google Sheets CRM
-- No manual copy-paste needed
 
-## 🛠️ Built With
+- ✅ Prospect research using real-time web data
+- ✅ Personalized LinkedIn connection requests
+- ✅ Personalized cold email generation
+- ✅ Follow-up message generation
+- ✅ Google Sheets CRM integration
+- ✅ Analytics dashboard
+
+## 🏗️ Architecture
+
+Research Agent → Outreach Agent → Follow-up Agent → CRM Agent → Analytics Dashboard
+
+## 🛠️ Tech Stack
+
 - Python
-- LangGraph — multi-agent pipeline
-- Groq API — LLaMA 3.3-70b
-- Serper API — web research
-- Google Sheets — persistent CRM
-- Streamlit — UI
+- LangGraph
+- Groq (LLaMA 3.3 70B)
+- Serper API
+- Google Sheets
+- Streamlit
 
-## 💡 Use Case
-SaaS founders and B2B sales teams who want research-backed, personalized outreach at scale — without hiring an SDR.
+## 🎯 Ideal Users
+
+- SaaS Startups
+- B2B Agencies
+- Sales Teams
+- Founders
+
+## 🚧 Future Roadmap
+
+- Lead Scoring
+- Email Sending Automation
+- Reply Classification
+- Meeting Booking Integration
 
 ## 👨‍💻 Built By
-**Pankaj Singh** — AI Agent Developer
-- LinkedIn Outreach Agent: [Live Demo](https://linkedin-outreach-agent-cukam2yvxypctg9ajpz9w8.streamlit.app/)
-- Email:singhpankaj9636@gmail.com
+
+**Pankaj Singh**
+AI Agent Developer
+
+- 🤝 LinkedIn Outreach Agent (Live): https://linkedin-outreach-agent-cukam2yvxypctg9ajpz9w8.streamlit.app/
+- 💻 GitHub: https://github.com/singhpankaj9636-bit
