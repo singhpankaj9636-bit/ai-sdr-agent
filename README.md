@@ -3,7 +3,7 @@
 > Automate prospect research, personalized outreach, and CRM management with AI.
 
 ## 🔗 Live Demo
-👉 [Try it here](https://ai-sdr-agent-u8m5zulvxnjbjxugbwuhpp.streamlit.app/)
+👉 [Try it here](https://singhpankaj9636-bit.github.io/ai-sdr-agent/)
 
 Try the application and see how AI can generate research-backed outreach in seconds.
 
