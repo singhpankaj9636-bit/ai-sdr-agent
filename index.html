@@ -664,8 +664,395 @@
 
 <div class="wrap">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="eyebrow reveal">multi-agent outbound system <span>// research → outreach → score → crm</span></div>
-    <h1 class="reveal">Give it a name and a company.<br>It does the <span class="accent">SDR work</span>.</h1>
-    <p class="hero-sub reveal">A LangGraph pipeline that researches a prospect, writes outreach from what it actually found, scores the lead on f
+    
+  <!-- HERO -->  
+  <section class="hero">  
+    <div class="eyebrow reveal">multi-agent outbound system <span>// research → outreach → score → crm</span></div>  
+    <h1 class="reveal">Give it a name and a company.<br>It does the <span class="accent">SDR work</span>.</h1>  
+    <p class="hero-sub reveal">A LangGraph pipeline that researches a prospect, writes outreach from what it actually found, scores the lead on fixed rules, and saves to CRM — no templates, no copy-paste.</p>  
+    <div class="hero-actions reveal">  
+      <a class="btn-primary" href="https://ai-sdr-agent-u8m5zulvxnjbjxugbwuhpp.streamlit.app/" target="_blank">Try it on a real prospect</a>  
+      <a class="btn-secondary" href="#output">See real output</a>  
+    </div>  
+  
+    <!-- LIVE METRICS -->  
+    <div class="metrics reveal">  
+      <div class="metric">  
+        <div class="metric-num" data-target="4">0</div>  
+        <div class="metric-label">AI Agents</div>  
+      </div>  
+      <div class="metric">  
+        <div class="metric-num" data-target="2">0</div>  
+        <div class="metric-label">Web Searches / Run</div>  
+      </div>  
+      <div class="metric">  
+        <div class="metric-num" data-target="3">0</div>  
+        <div class="metric-label">Messages Generated</div>  
+      </div>  
+      <div class="metric">  
+        <div class="metric-num" data-target="1">0</div>  
+        <div class="metric-label">CRM Update</div>  
+      </div>  
+    </div>  
+  
+    <!-- LIVE TRACE -->  
+    <div class="trace reveal">  
+      <div class="trace-bar">  
+        <span class="trace-dot d1"></span><span class="trace-dot d2"></span><span class="trace-dot d3"></span>  
+        <span class="trace-title">agent_run.log</span>  
+      </div>  
+      <div class="trace-body" id="traceBody"></div>  
+    </div>  
+  </section>  
+  
+  <!-- REAL OUTPUT SHOWCASE -->  
+  <section class="section" id="output">  
+    <div class="section-eyebrow reveal">real output</div>  
+    <h2 class="section-title reveal">This is what the agent <span class="dim">actually generates.</span></h2>  
+  
+    <div class="showcase reveal">  
+      <!-- Input -->  
+      <div class="show-input">  
+        <div class="show-label"><span class="tag-pill">INPUT</span> What you provide</div>  
+        <div class="show-field"><span class="k">Company</span><span class="v">HubSpot</span></div>  
+        <div class="show-field"><span class="k">Prospect</span><span class="v">John Smith</span></div>  
+        <div class="show-field"><span class="k">Title</span><span class="v">VP of Sales</span></div>  
+        <div class="show-field"><span class="k">Pain Point</span><span class="v">Scaling outbound</span></div>  
+        <div class="show-field"><span class="k">Stage</span><span class="v">Growth-stage SaaS</span></div>  
+        <div class="show-field"><span class="k">Tone</span><span class="v">Founder-style</span></div>  
+  
+        <div style="margin-top:20px">  
+          <div class="show-label" style="margin-bottom:10px">Research signals found</div>  
+          <div style="font-size:13px;color:var(--text-dim);line-height:1.7">  
+            <div style="color:var(--signal)">✓</div> Hiring 15 SDRs in Q1  
+            <br><div style="color:var(--signal)">✓</div> Opened London office  
+            <br><div style="color:var(--signal)">✓</div> $35M Series C raised  
+          </div>  
+        </div>  
+      </div>  
+  
+      <!-- Outputs -->  
+      <div class="show-output-col">  
+        <div class="out-block">  
+          <div class="out-header">  
+            <span class="label">LinkedIn Connection Request</span>  
+            <span class="badge badge-msg">MESSAGE</span>  
+          </div>  
+          <div class="out-body">  
+            John — saw HubSpot's hiring push for SDRs and the London expansion. Curious how you're thinking about outbound consistency at that scale. Worth connecting?  
+          </div>  
+        </div>  
+  
+        <div class="out-block">  
+          <div class="out-header">  
+            <span class="label">Follow-up DM</span>  
+            <span class="badge badge-msg">FOLLOW-UP</span>  
+          </div>  
+          <div class="out-body">  
+            Built a workflow recently that cut manual outreach time for a scaling sales team significantly. Happy to share the setup — no pitch, just the approach. Open to it?  
+          </div>  
+        </div>  
+  
+        <div class="out-block">  
+          <div class="out-header">  
+            <span class="label">Cold Email</span>  
+            <span class="badge badge-email">EMAIL</span>  
+          </div>  
+          <div class="out-body">  
+            <span class="sig-line">Subject: SDR scaling — one thing worth seeing</span><br><br>  
+            John,<br>  
+            Saw HubSpot just raised and is building out the SDR team.<br>  
+            Scaling outbound without it becoming a copy-paste machine is the hard part.<br>  
+            Built an agent that handles the research and drafting side automatically.<br>  
+            Worth a look?  
+          </div>  
+        </div>  
+  
+        <div class="out-block">  
+          <div class="out-header">  
+            <span class="label">Lead Score</span>  
+            <span class="badge badge-score">SCORE</span>  
+          </div>  
+          <div class="out-body">  
+            <div class="score-row">  
+              <div class="score-big">91<span>/100</span></div>  
+              <div class="hot-badge">🔥 HOT</div>  
+            </div>  
+            <div class="mini-bar"><div class="mini-fill"></div></div>  
+            <div style="margin-top:10px;font-size:12.5px;color:var(--text-dim)">Growth-stage +20 · Funding +20 · Hiring +15 · Pain point +10 · Baseline +30 — minus 4 for generic pain point framing.</div>  
+          </div>  
+        </div>  
+      </div>  
+    </div>  
+  </section>  
+  
+  <!-- ARCHITECTURE -->  
+  <section class="section" id="arch">  
+    <div class="section-eyebrow reveal">architecture</div>  
+    <h2 class="section-title reveal">Four nodes. <span class="dim">One LangGraph pipeline.</span></h2>  
+  
+    <div class="arch reveal">  
+      <div class="arch-user">👤 You — enter name + company</div>  
+      <div class="arch-flow">  
+        <div class="arch-node">  
+          <div class="n-icon">🔍</div>  
+          <div class="n-name">Research Agent</div>  
+          <div class="n-desc">2 Serper queries<br>funding / hiring / launch</div>  
+        </div>  
+        <div class="arch-arrow">→</div>  
+        <div class="arch-node">  
+          <div class="n-icon">✍️</div>  
+          <div class="n-name">Outreach Agent</div>  
+          <div class="n-desc">Connection request<br>+ cold email</div>  
+        </div>  
+        <div class="arch-arrow">→</div>  
+        <div class="arch-node">  
+          <div class="n-icon">📧</div>  
+          <div class="n-name">Follow-up Agent</div>  
+          <div class="n-desc">Value-first DM<br>soft CTA</div>  
+        </div>  
+        <div class="arch-arrow">→</div>  
+        <div class="arch-node">  
+          <div class="n-icon">🎯</div>  
+          <div class="n-name">Scoring Agent</div>  
+          <div class="n-desc">Rule-based<br>0–100 score</div>  
+        </div>  
+        <div class="arch-arrow">→</div>  
+        <div class="arch-node">  
+          <div class="n-icon">💾</div>  
+          <div class="n-name">CRM Agent</div>  
+          <div class="n-desc">Google Sheets<br>duplicate-safe</div>  
+        </div>  
+      </div>  
+    </div>  
+  </section>  
+  
+  <!-- HOW IT WORKS -->  
+  <section class="section" id="how">  
+    <div class="section-eyebrow reveal">pipeline</div>  
+    <h2 class="section-title reveal">Zero copy-paste. <span class="dim">One input, five outputs.</span></h2>  
+    <div class="flow reveal">  
+      <div class="flow-step">  
+        <div class="flow-num">01 — RESEARCH</div>  
+        <div class="flow-name">Find the signal</div>  
+        <div class="flow-desc">Queries web for funding, hiring, and launch activity — not generic search results.</div>  
+      </div>  
+      <div class="flow-step">  
+        <div class="flow-num">02 — OUTREACH</div>  
+        <div class="flow-name">Write from findings</div>  
+        <div class="flow-desc">Connection request and cold email use what was actually found, not a template.</div>  
+      </div>  
+      <div class="flow-step">  
+        <div class="flow-num">03 — SCORE</div>  
+        <div class="flow-name">Rank by fixed rules</div>  
+        <div class="flow-desc">Stage, funding, hiring add to 0–100. LLM explains, doesn't invent the score.</div>  
+      </div>  
+      <div class="flow-step">  
+        <div class="flow-num">04 — CRM</div>  
+        <div class="flow-name">Log it, once</div>  
+        <div class="flow-desc">Writes to Google Sheet with status. Same prospect won't be saved twice.</div>  
+      </div>  
+    </div>  
+  </section>  
+  
+  <!-- FEATURES -->  
+  <section class="section">  
+    <div class="section-eyebrow reveal">features</div>  
+    <h2 class="section-title reveal">Built for someone who has to <span class="dim">send the next 50 messages.</span></h2>  
+    <div class="feat-grid reveal">  
+      <div class="feat">  
+        <div class="feat-icon">[ 01 ]</div>  
+        <h3>Real-time research</h3>  
+        <p>Two targeted Serper queries — company news + person profile. Not generic search noise.</p>  
+      </div>  
+      <div class="feat">  
+        <div class="feat-icon">[ 02 ]</div>  
+        <h3>Connection + cold email</h3>  
+        <p>Both in one run, capped at 50 words for the request so it doesn't get truncated on LinkedIn.</p>  
+      </div>  
+      <div class="feat">  
+        <div class="feat-icon">[ 03 ]</div>  
+        <h3>Follow-up message</h3>  
+        <p>Generated separately. Leads with value instead of restating the original pitch.</p>  
+      </div>  
+      <div class="feat">  
+        <div class="feat-icon">[ 04 ]</div>  
+        <h3>Duplicate-safe CRM</h3>  
+        <p>Checks name + company before writing a row. Same prospect won't pile up in the sheet.</p>  
+      </div>  
+      <div class="feat">  
+        <div class="feat-icon">[ 05 ]</div>  
+        <h3>Status pipeline</h3>  
+        <p>New → Contacted → Replied → Meeting Booked → Won / Lost, tracked per CRM row.</p>  
+      </div>  
+      <div class="feat">  
+        <div class="feat-icon">[ 06 ]</div>  
+        <h3>Live analytics</h3>  
+        <p>Outreach count, reply rate, and hot-lead count pulled from the sheet — not hardcoded.</p>  
+      </div>  
+    </div>  
+  </section>  
+  
+  <!-- STACK -->  
+  <section class="section">  
+    <div class="section-eyebrow reveal">stack</div>  
+    <h2 class="section-title reveal">Four services. <span class="dim">One job each.</span></h2>  
+    <div class="stack-row reveal">  
+      <span class="stack-pill">Python</span>  
+      <span class="stack-pill">LangGraph</span>  
+      <span class="stack-pill">Groq · Llama 3.3 70B</span>  
+      <span class="stack-pill">Serper API</span>  
+      <span class="stack-pill">Google Sheets</span>  
+      <span class="stack-pill">Streamlit</span>  
+    </div>  
+  </section>  
+  
+  <!-- FAQ -->  
+  <section class="section" id="faq">  
+    <div class="section-eyebrow reveal">faq</div>  
+    <h2 class="section-title reveal">Common questions.</h2>  
+    <div class="faq reveal">  
+      <div class="faq-item">  
+        <button class="faq-q" onclick="toggleFaq(this)">How long does one research run take? <span class="arrow">+</span></button>  
+        <div class="faq-a">Typically 15–35 seconds end-to-end. Research + two LLM calls + a Sheets write. Fast enough to use live in a session.</div>  
+      </div>  
+      <div class="faq-item">  
+        <button class="faq-q" onclick="toggleFaq(this)">Which LLM does it use? <span class="arrow">+</span></button>  
+        <div class="faq-a">Groq's hosted Llama 3.3 70B. It's fast and free-tier friendly. The model can be swapped in one line of config.</div>  
+      </div>  
+      <div class="faq-item">  
+        <button class="faq-q" onclick="toggleFaq(this)">Can it connect to a different CRM? <span class="arrow">+</span></button>  
+        <div class="faq-a">Currently writes to Google Sheets. Airtable, Notion, and HubSpot are on the roadmap. The CRM node is isolated, so it's straightforward to swap.</div>  
+      </div>  
+      <div class="faq-item">  
+        <button class="faq-q" onclick="toggleFaq(this)">Can prompts be customised? <span class="arrow">+</span></button>  
+        <div class="faq-a">Yes — the prompts in outreach_node and followup_node are plain strings. Change the tone, add your company context, or lock in a specific hook style.</div>  
+      </div>  
+      <div class="faq-item">  
+        <button class="faq-q" onclick="toggleFaq(this)">Is the outreach editable before sending? <span class="arrow">+</span></button>  
+        <div class="faq-a">The agent generates and displays — you copy and send manually. There is no auto-send. That's intentional: you should read it before it leaves your name.</div>  
+      </div>  
+    </div>  
+  </section>  
+  
+  <!-- ABOUT -->  
+  <section class="section" id="about">  
+    <div class="section-eyebrow reveal">about</div>  
+    <h2 class="section-title reveal">Built by one person. <span class="dim">In public.</span></h2>  
+    <div class="about-card reveal">  
+      <div class="about-avatar">PS</div>  
+      <div class="about-text">  
+        <h3>Pankaj Singh</h3>  
+        <p>AI Agent Developer specialising in LangGraph workflows for B2B sales automation. Building in public — both agents are open source and live.</p>  
+        <div class="about-links">  
+          <a class="about-link" href="https://github.com/singhpankaj9636-bit" target="_blank">GitHub →</a>  
+          <a class="about-link" href="https://linkedin-outreach-agent-cukam2yvxypctg9ajpz9w8.streamlit.app/" target="_blank">LinkedIn Outreach Agent →</a>  
+          <a class="about-link" href="https://ai-sdr-agent-u8m5zulvxnjbjxugbwuhpp.streamlit.app/" target="_blank">AI SDR Agent →</a>  
+        </div>  
+      </div>  
+    </div>  
+  
+    <div class="pilot-box reveal">  
+      <h3>Currently available for pilot projects</h3>  
+      <p>Looking for design partners — founders or sales teams who want to run this on their actual prospect list and share what worked and what didn't.</p>  
+    </div>  
+  </section>  
+  
+  <!-- CTA -->  
+  <section class="cta-section">  
+    <h2 class="reveal">Point it at one real prospect.<br>See the <span class="accent">trace</span>, not a sales page.</h2>  
+    <p class="reveal">Free to run. No signup. Results write straight to the live CRM.</p>  
+    <a class="btn-primary reveal" href="https://ai-sdr-agent-u8m5zulvxnjbjxugbwuhpp.streamlit.app/" target="_blank">Launch AI SDR Agent →</a>  
+  </section>  
+  
+  <footer>  
+    <span>Built by Pankaj Singh — AI Agent Developer</span>  
+    <span>  
+      <a href="https://github.com/singhpankaj9636-bit/ai-sdr-agent" target="_blank">GitHub</a>  
+      &nbsp;·&nbsp;  
+      <a href="https://linkedin-outreach-agent-cukam2yvxypctg9ajpz9w8.streamlit.app/" target="_blank">LinkedIn Outreach Agent</a>  
+    </span>  
+  </footer>  
+  
+</div>  
+  
+<script>  
+  // Scroll progress bar  
+  window.addEventListener('scroll', () => {  
+    const el = document.getElementById('progress-bar');  
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;  
+    el.style.width = pct + '%';  
+  
+    // Back to top button  
+    const btn = document.getElementById('back-top');  
+    window.scrollY > 400 ? btn.classList.add('show') : btn.classList.remove('show');  
+  });  
+  
+  // Mouse glow  
+  const glow = document.getElementById('glow');  
+  window.addEventListener('mousemove', e => {  
+    glow.style.left = e.clientX + 'px';  
+    glow.style.top = e.clientY + 'px';  
+  });  
+  
+  // Scroll reveal  
+  const observer = new IntersectionObserver(entries => {  
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });  
+  }, { threshold: 0.12 });  
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));  
+  
+  // Animated counters  
+  function animateCounter(el, target) {  
+    let current = 0;  
+    const step = target / 28;  
+    const interval = setInterval(() => {  
+      current = Math.min(current + step, target);  
+      el.textContent = Math.round(current);  
+      if (current >= target) clearInterval(interval);  
+    }, 40);  
+  }  
+  const counterObserver = new IntersectionObserver(entries => {  
+    entries.forEach(e => {  
+      if (e.isIntersecting) {  
+        e.target.querySelectorAll('[data-target]').forEach(el => animateCounter(el, +el.dataset.target));  
+        counterObserver.unobserve(e.target);  
+      }  
+    });  
+  }, { threshold: 0.3 });  
+  const metricsEl = document.querySelector('.metrics');  
+  if (metricsEl) counterObserver.observe(metricsEl);  
+  
+  // Live trace  
+  const lines = [  
+    { ts: '00:00.1', tag: 'RESEARCH', tagClass: 'research', html: 'querying <span class="dim">"HubSpot funding OR hiring OR product launch"</span>' },  
+    { ts: '00:01.2', tag: 'RESEARCH', tagClass: 'research', html: 'found 5 signals · <span class="dim">hiring (SDRs), London office, Series C</span>' },  
+    { ts: '00:01.9', tag: 'OUTREACH', tagClass: 'outreach', html: 'drafting connection request <span class="dim">(43 words)</span>' },  
+    { ts: '00:02.8', tag: 'OUTREACH', tagClass: 'outreach', html: 'drafting cold email + follow-up' },  
+    { ts: '00:03.9', tag: 'SCORE', tagClass: 'score', html: 'growth-stage +20 · funding +20 · hiring +15 · pain point +10' },  
+    { ts: '00:04.0', tag: 'SCORE', tagClass: 'score', html: 'result → <span style="color:#ff8a3d;font-weight:700">91/100 — HOT</span>' },  
+    { ts: '00:04.5', tag: 'CRM', tagClass: 'crm', html: 'checking duplicate · <span class="dim">none found</span>' },  
+    { ts: '00:04.7', tag: 'CRM', tagClass: 'crm', html: 'row written · status: <span style="color:#5b9dff">New</span>' },  
+  ];  
+  
+  const body = document.getElementById('traceBody');  
+  let i = 0;  
+  function typeLine() {  
+    if (i >= lines.length) { setTimeout(() => { body.innerHTML = ''; i = 0; typeLine(); }, 2400); return; }  
+    const l = lines[i];  
+    const div = document.createElement('div');  
+    div.className = 'tline';  
+    div.innerHTML = `<span class="ts">${l.ts}</span><span class="tag ${l.tagClass}">${l.tag}</span><span class="msg">${l.html}</span>`;  
+    body.appendChild(div);  
+    i++;  
+    setTimeout(typeLine, 500);  
+  }  
+  typeLine();  
+  
+  // FAQ toggle  
+  function toggleFaq(btn) {  
+    const item = btn.closest('.faq-item');  
+    item.classList.toggle('open');  
+  }  
+</script>  
+</body>  
+</html>  
