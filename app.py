@@ -309,13 +309,14 @@ def extraction_node(state: SDRState) -> SDRState:
     # Search exact URL / domain
     # -----------------------------------------------------
     try:
-        if is_linkedin:
+                if is_linkedin:
             parsed = urlparse(url)
-profile_slug = parsed.path.rstrip("/").split("/")[-1]
-query = f'site:linkedin.com/in "{profile_slug.replace("-", " ")}"'
+            profile_slug = parsed.path.rstrip("/").split("/")[-1]
+            query = f'site:linkedin.com/in "{profile_slug.replace("-", " ")}"'
         else:
             domain = urlparse(url).netloc or url
             query = f'"{domain}" official company'
+            
 
         data = {
             "q": query,
