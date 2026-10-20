@@ -807,7 +807,16 @@ unsupported stage.
         state.pop("error", None)
 
     return state
+def route_after_extraction(state: SDRState) -> str:
+    return "stop" if state.get("error") else "continue"
 
+
+def normalize_profile_key(url):
+    try:
+        parsed = urlparse(normalize_lead_url(url))
+        return ((parsed.hostname or "").lower().removeprefix("www."), parsed.path.rstrip("/").lower())
+    except Exception:
+        return ("", "")
 
 
 # =========================================================
